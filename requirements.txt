@@ -1,0 +1,5 @@
+pandas
+matplotlib
+requests
+nba_api
+argparse
