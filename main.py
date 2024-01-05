@@ -1,9 +1,21 @@
 import argparse
 import sys
 import pprint
+import matplotlib as plt
 
 from util import lifespan
+from util import threePointAttempt
+from util import totalGames
+from util import fieldGoalAttempt
+from util import freeThrowAttempt
+from util import pointsPerGame
+from util import assistsPerGame
+from util import reboundsPerGame
+
 from charts import pointslinegraph
+from charts import assistslinegraph
+from charts import reboundslinegraph
+
 from nba_api.stats.static import players
 from nba_api.stats.endpoints import playercareerstats
 
@@ -40,11 +52,27 @@ if name1 is not None:
    player1 = active_list[0]
    player1_full_name = player1['full_name']
    player1_id = player1['id']
+
    player1_stats = lifespan(player1_id)
-   player1_line = pointslinegraph(player1_id)
+   player1_total_games = totalGames(player1_id)
+
+   player1_avg_three_points_attempt = threePointAttempt(player1_id)/totalGames(player1_id)
+   player1_avg_field_goal_attempt = fieldGoalAttempt(player1_id)/totalGames(player1_id)
+   player1_avg_free_throw_attempt = freeThrowAttempt(player1_id)/totalGames(player1_id)
+   player1_avg_points_per_game = pointsPerGame(player1_id)/totalGames(player1_id)
+   player1_avg_assists_per_game = assistsPerGame(player1_id)/totalGames(player1_id)
+   player1_avg_rebounds_per_game = reboundsPerGame(player1_id)/totalGames(player1_id)
+   
+   print(int(player1_avg_three_points_attempt))
+   print(int(player1_avg_field_goal_attempt))
+   print(int(player1_avg_free_throw_attempt))
+   print(int(player1_avg_points_per_game)) # round to nearest tenth
+   print(int(player1_avg_assists_per_game)) # round to nearest tenth
+   print(int(player1_avg_rebounds_per_game)) # round to nearest tenth
+
+   
 
 
-   pprint.pprint(player1_line)
 
 if name2 is not None:
    full_name2 = " ".join(name2)
@@ -62,4 +90,6 @@ if name2 is not None:
    player2_id = player2['id']
    player2_stats = lifespan(player2_id)
 
-   pprint.pprint(player2_stats)
+   pointslinegraph(player1_id,player2_id)
+   assistslinegraph(player1_id,player2_id)
+   reboundslinegraph(player1_id,player2_id)
