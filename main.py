@@ -62,13 +62,15 @@ if name1 is not None:
    player1_avg_points_per_game = pointsPerGame(player1_id)/totalGames(player1_id)
    player1_avg_assists_per_game = assistsPerGame(player1_id)/totalGames(player1_id)
    player1_avg_rebounds_per_game = reboundsPerGame(player1_id)/totalGames(player1_id)
-   
-   print(int(player1_avg_three_points_attempt))
-   print(int(player1_avg_field_goal_attempt))
-   print(int(player1_avg_free_throw_attempt))
-   print(int(player1_avg_points_per_game)) # round to nearest tenth
-   print(int(player1_avg_assists_per_game)) # round to nearest tenth
-   print(int(player1_avg_rebounds_per_game)) # round to nearest tenth
+
+   print(player1_full_name+"'s " + 'Career Stats')
+   print('Average 3pt attempt: ' + str(int(player1_avg_three_points_attempt)))
+   print('Average Field Goal Attempt: ' + str(int(player1_avg_field_goal_attempt)))
+   print('Average Free Throw Attempt: ' + str(int(player1_avg_free_throw_attempt)))
+   print('Average Points Per Game: ' + str(round(float(player1_avg_points_per_game)*10)/10))
+   print('Average Assists Per Game: ' + str(round(float(player1_avg_assists_per_game)*10)/10)) 
+   print('Average Rebounds Per Game: ' + str(round(float(player1_avg_rebounds_per_game)*10)/10))
+   print('\n')
 
    
 
@@ -90,6 +92,21 @@ if name2 is not None:
    player2_id = player2['id']
    player2_stats = lifespan(player2_id)
 
-   pointslinegraph(player1_id,player2_id)
-   assistslinegraph(player1_id,player2_id)
-   reboundslinegraph(player1_id,player2_id)
+   player2_avg_three_points_attempt = threePointAttempt(player2_id)/totalGames(player2_id)
+   player2_avg_field_goal_attempt = fieldGoalAttempt(player2_id)/totalGames(player2_id)
+   player2_avg_free_throw_attempt = freeThrowAttempt(player2_id)/totalGames(player2_id)
+   player2_avg_points_per_game = pointsPerGame(player2_id)/totalGames(player2_id)
+   player2_avg_assists_per_game = assistsPerGame(player2_id)/totalGames(player2_id)
+   player2_avg_rebounds_per_game = reboundsPerGame(player2_id)/totalGames(player2_id)
+
+   print(player2_full_name+"'s " + 'Career Stats')
+   print('Average 3pt attempt: ' + str(int(player2_avg_three_points_attempt)))
+   print('Average Field Goal Attempt: ' + str(int(player2_avg_field_goal_attempt)))
+   print('Average Free Throw Attempt: ' + str(int(player2_avg_free_throw_attempt)))
+   print('Average Points Per Game: ' + str(round(float(player2_avg_points_per_game)*10)/10))
+   print('Average Assists Per Game: ' + str(round(float(player2_avg_assists_per_game)*10)/10))  
+   print('Average Rebounds Per Game: ' + str(round(float(player2_avg_rebounds_per_game)*10)/10))
+
+pointslinegraph(player1_id,player2_id)
+assistslinegraph(player1_id,player2_id)
+reboundslinegraph(player1_id,player2_id)
